@@ -7,38 +7,37 @@
 #include <string> 
 #include <vector> 
 #include <algorithm>
-using namespace std;
 
 //Вывод текущей позиции
-void echo(vector<string> arr) {
+void echo(std::vector<std::string> arr) {
 	// Очистка консоли
 	system("cls");
 	// Вывод позиции
-	cout << setw(50) << "" << setw(5) << arr[0] << setw(5) << arr[1] << setw(5) << arr[2] << endl;
-	cout << setw(50) << "" << setw(5) << arr[3] << setw(5) << arr[4] << setw(5) << arr[5] << endl;
-	cout << setw(50) << "" << setw(5) << arr[6] << setw(5) << arr[7] << setw(5) << arr[8] << endl;
+	std::cout << std::setw(50) << "" << std::setw(5) << arr[0] << std::setw(5) << arr[1] << std::setw(5) << arr[2] << std::endl;
+	std::cout << std::setw(50) << "" << std::setw(5) << arr[3] << std::setw(5) << arr[4] << std::setw(5) << arr[5] << std::endl;
+	std::cout << std::setw(50) << "" << std::setw(5) << arr[6] << std::setw(5) << arr[7] << std::setw(5) << arr[8] << std::endl;
 }
 
 // Конец партии
 void end(int life) {
 	if (life == 0) {
-		cout << setw(60) << "DRAW" << endl;
+		std::cout << std::setw(60) << "DRAW" << std::endl;
 	}
 	if (life == 2) {
-		cout << setw(50) << "CROSSE WON!" << endl;
+		std::cout << std::setw(50) << "CROSSE WON!" << std::endl;
 	}
 	if (life == 3) {
-		cout << setw(50) << "NOUGHT WON!" << endl;
+		std::cout << std::setw(50) << "NOUGHT WON!" << std::endl;
 	}
-	cout << setw(50) << "Click ENTER to play again" << endl;
-	cout << setw(50) << "Click another button to end" << endl;
+	std::cout << std::setw(50) << "Click ENTER to play again" << std::endl;
+	std::cout << std::setw(50) << "Click another button to end" << std::endl;
 }
 
 // Проверка конца партии
 // Выводит: 0 - ничья, 1 - партия играется, 2 - выиграл Крестик, 3 -выиграл Нолик
-int check(vector<string> arr, vector<int> moves) {
+int check(std::vector<std::string> arr, std::vector<int> moves) {
 	// Массив для преобразования знака победившего в код
-	map<string, int> transform = { {"X",2},{"0",3} };
+	std::map<std::string, int> transform = { {"X",2},{"0",3} };
 	// Если ряд закончен (8 случаев)
 	if (arr[0] == arr[1] and arr[1] == arr[2]) {
 		return(transform[arr[0]]);
@@ -75,16 +74,16 @@ int check(vector<string> arr, vector<int> moves) {
 int main() {
 	int fl = 0;
 	// Установка начальных значений
-	string flag = "X";
-	vector<int> moves;
-	vector<string> arr = { "1","2","3","4","5","6","7","8","9" };
+	std::string flag = "X";
+	std::vector<int> moves;
+	std::vector<std::string> arr = { "1","2","3","4","5","6","7","8","9" };
 	// Вывод начальной позиции
 	echo(arr);
 	// Главный цикл
 	while (true) {
 		// Если игра была перезапущена
 		if (fl == 0) {
-			cout << "Restart!" << endl;
+			std::cout << "Restart!" << std::endl;
 			// Переустановка начальных значений
 			flag = "X";
 			moves = {};
